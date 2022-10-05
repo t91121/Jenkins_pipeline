@@ -1,0 +1,27 @@
+def GITHUB_COMMENT_FILE = '/var/jenkins_home/jobs/jenkins_pipeline/comment.txt'
+pipeline {
+    agent any
+
+    stages {
+        stage('Init') {
+            steps {
+                sh "rm -rf $GITHUB_COMMENT_FILE"
+            }
+        }
+        stage('Build') {
+            steps {
+                sh "echo Building success>> ${GITHUB_COMMENT_FILE}"
+            }
+        }
+        stage('Test') {
+            steps {
+                sh "echo Testing success>> ${GITHUB_COMMENT_FILE}"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh "echo Deploying success>> ${GITHUB_COMMENT_FILE}"
+            }
+        }
+    }
+}
